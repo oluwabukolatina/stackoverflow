@@ -1,10 +1,9 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../../src/lib/utils/database/database';
-import QuestionModel from './question';
-import { UserInstance } from '../../src/lib/modules/user/types/user-types';
+import { DummyInstance } from '../../src/lib/modules/dummy/types/dummy-types';
 
-const User = sequelize.define<UserInstance>(
-  'User',
+const Dummy = sequelize.define<DummyInstance>(
+  'Dummy',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -17,10 +16,11 @@ const User = sequelize.define<UserInstance>(
     password: {
       type: DataTypes.STRING,
     },
+    name: {
+      type: DataTypes.STRING,
+    },
   },
   {},
 );
 
-User.hasMany(QuestionModel);
-
-export default User;
+export default Dummy;

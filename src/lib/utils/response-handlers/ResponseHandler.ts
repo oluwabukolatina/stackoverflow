@@ -24,5 +24,15 @@ export default class ResponseHandler {
   static ServerErrorResponse = (res: Response) =>
     res
       .status(HTTP_INTERNAL_SERVER_ERROR)
-      .json({ message: 'something went wrong', status: false });
+      .json({ message: 'Internal Server Error', status: false });
+
+  static JoiErrorResponse(
+    res: Response,
+    statusCode: number,
+    status: boolean,
+    error: any,
+    message: string,
+  ) {
+    return res.status(statusCode).json({ status, message, error });
+  }
 }

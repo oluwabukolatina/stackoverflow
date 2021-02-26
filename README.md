@@ -28,3 +28,6 @@
 - Use `http://localhost:${PORT}` as base url for endpoints
 ## Author
 - [Tina](https://github.com/oluwabukolatina)
+
+
+## add validation

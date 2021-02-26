@@ -1,5 +1,4 @@
 import app from '../app';
-import sequelize from '../lib/utils/database/database';
 /**
  * App Variables
  */
@@ -8,12 +7,14 @@ if (!process.env.PORT) {
 }
 const PORT: number = parseInt(process.env.PORT as string, 10) || 3000;
 app.listen(PORT, () => {
-  sequelize
-    .authenticate()
-    .then(() => {
-      console.log('Connection has been established successfully.');
-    })
-    .catch((err) => {
-      console.error('Unable to connect to the database:', err);
-    });
+  // eslint-disable-next-line no-console
+  console.log(`running on ${PORT}`);
+  // sequelize
+  //   .authenticate()
+  //   .then(() => {
+  //     console.log('Connection has been established successfully.');
+  //   })
+  //   .catch((err) => {
+  //     console.error('Unable to connect to the database:', err);
+  //   });
 });
