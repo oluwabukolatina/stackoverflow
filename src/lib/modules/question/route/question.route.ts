@@ -5,7 +5,7 @@ class QuestionRoutes {
   public questionController: QuestionController = new QuestionController();
 
   public routes = (app: Application): void => {
-    const QUESTIONS_URL = '/api/v1/korapay';
+    const QUESTIONS_URL = '/api/v1/korapay/question';
     app.route(`${QUESTIONS_URL}`).post(this.questionController.createQuestion);
   };
 }

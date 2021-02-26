@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
-import QuestionRoutes from './lib/components/modules/Question/route/question.route';
+import QuestionRoutes from './lib/modules/question/route/question.route';
 
 /**
  * routes
@@ -25,6 +25,7 @@ class App {
   }
 
   private config = (): void => {
+    this.app.use(express.json());
     this.app.use(morgan('dev'));
     this.app.use(
       expressWinston.errorLogger({

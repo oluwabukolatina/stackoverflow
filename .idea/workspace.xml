@@ -1,36 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b166d860-5a29-4aa8-9aa5-8fe18fa2cb37" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.huskyrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/nodejs-typescript-starter.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lintstagedrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bin/server.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/components/modules/Question/controller/question.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/components/modules/Question/entity/question.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/components/modules/Question/interface/user-types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/components/modules/Question/repository/question.repository.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/components/modules/Question/route/question.route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/utils/database/database.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/utils/response-handlers/ResponseHandler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/utils/status-codes/http-status-codes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/app.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.sequelizerc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/config/config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/question.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/modules/question/controller/question.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/modules/question/repository/question.repository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/modules/question/types/question-types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/modules/question/types/user-types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/modules/Question/controller/question.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/modules/Question/entity/question.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/modules/Question/interface/user-types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/modules/Question/repository/question.repository.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/modules/Question/route/question.route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/question/route/question.route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/utils/database/database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/database/database.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/utils/response-handlers/ResponseHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/response-handlers/ResponseHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,11 +67,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/lib/utils" />
-      <recent name="$PROJECT_DIR$/src/lib/components/modules/dummy/interface" />
-      <recent name="$PROJECT_DIR$/src/lib/components/modules/dummy/entity" />
       <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/database/models" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/database" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -92,7 +84,7 @@
       <updated>1614224901462</updated>
       <workItem from="1614224905988" duration="2530000" />
       <workItem from="1614267877954" duration="2657000" />
-      <workItem from="1614280198101" duration="12073000" />
+      <workItem from="1614280198101" duration="25015000" />
     </task>
     <servers />
   </component>
