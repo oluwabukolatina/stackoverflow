@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import QuestionRepository from '../repository/question.repository';
 import ResponseHandler from '../../../utils/response-handlers/ResponseHandler';
+import { HTTP_CREATED } from '../../../utils/status-codes/http-status-codes';
 
 class QuestionController {
   public createQuestion = async (req: Request, response: Response) => {
@@ -10,7 +11,7 @@ class QuestionController {
       const question = await QuestionRepository.askQuestion(data);
       return ResponseHandler.SuccessResponse(
         response,
-        201,
+        HTTP_CREATED,
         true,
         'Created Question',
         { question },
