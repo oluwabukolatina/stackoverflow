@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import DummyRepository from '../repository/dummy.repository';
-import ResponseHandler from '../../../utils/response-handlers/ResponseHandler';
+import ResponseHandler from '../../../utils/response-handlers/response-handler';
 import { HTTP_CREATED } from '../../../utils/status-codes/http-status-codes';
 
 class DummyController {

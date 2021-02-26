@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ResponseHandler from '../../../utils/response-handlers/ResponseHandler';
+import ResponseHandler from '../../../utils/response-handlers/response-handler';
 import { HTTP_CREATED } from '../../../utils/status-codes/http-status-codes';
 import AuthRepository from '../repository/auth.repository';
 import jwtHelper from '../utils/helper';

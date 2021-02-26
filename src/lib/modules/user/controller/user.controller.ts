@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
-import DummyRepository from '../repository/dummy.repository';
-import ResponseHandler from '../../../utils/response-handlers/ResponseHandler';
+import UserRepository from '../repository/user.repository';
+import ResponseHandler from '../../../utils/response-handlers/response-handler';
 import { HTTP_CREATED } from '../../../utils/status-codes/http-status-codes';
 
-class DummyController {
+class UserController {
   public create = async (req: Request, response: Response) => {
     try {
-      const dummy = await DummyRepository.create(req.body);
+      const dummy = await UserRepository.create(req.body);
       return ResponseHandler.SuccessResponse(
         response,
         HTTP_CREATED,
@@ -19,4 +19,4 @@ class DummyController {
     }
   };
 }
-export default DummyController;
+export default UserController;

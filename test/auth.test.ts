@@ -1,4 +1,4 @@
-import request from 'supertest';
+import request, { Response } from 'supertest';
 import { expect } from 'chai';
 import * as faker from 'faker';
 import app from '../src/app';
@@ -10,6 +10,22 @@ import {
 import { AUTH_URL } from '../src/lib/utils/urls';
 
 describe('auth /auth', () => {
+  let user: any = null;
+  before((done) => {
+    const data = {
+      email: faker.internet.email(),
+      password: faker.random.word(),
+    };
+    request(app)
+      .post(`${AUTH_URL}/register`)
+      .send(data)
+      .expect(HTTP_CREATED)
+      .end((err: Error, res) => {
+        expect(res.status).to.eql(HTTP_CREATED);
+        user = res.body.data.user;
+        done();
+      });
+  });
   it('should create a user', () => {
     request(app)
       .post(`${AUTH_URL}/register`)
@@ -40,7 +56,6 @@ describe('auth /auth', () => {
         expect(res.body.error[0].message).to.eql('email is required');
       });
   });
-
   it('should not create a user if no password', () => {
     request(app)
       .post(`${AUTH_URL}/register`)
@@ -54,6 +69,21 @@ describe('auth /auth', () => {
         expect(res.body.status).to.eql(false);
         expect(res.body.should.have.property('error'));
         expect(res.body.error[0].message).to.eql('password is required');
+      });
+  });
+  it('should not create a user that already exists', (done) => {
+    const data = {
+      email: user.email,password: 'password'
+    };
+    request(app)
+      .post(`${AUTH_URL}/register`)
+      .send(data)
+      .expect(HTTP_BAD_REQUEST)
+      .end((err: Error, res) => {
+        expect(res.status).to.eql(HTTP_BAD_REQUEST);
+        expect(res.body.status).to.eql(false);
+        expect(res.body.message).to.eql('Invalid Email/Password');
+        done()
       });
   });
 });

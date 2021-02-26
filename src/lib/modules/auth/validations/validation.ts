@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
-import ResponseHandler from '../../../utils/response-handlers/ResponseHandler';
+import ResponseHandler from '../../../utils/response-handlers/response-handler';
 import { HTTP_BAD_REQUEST } from '../../../utils/status-codes/http-status-codes';
+import UserRepository from '../../user/repository/user.repository';
 
 /**
  * to sign the user
@@ -32,6 +33,30 @@ async function validateRegister(
   return next();
 }
 
+/**
+ * check if user trying to create an account exists already
+ * @param body
+ * @param res
+ * @param next
+ */
+async function checkIfUserExists(
+  { body }: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  const { email } = body;
+  const user = await UserRepository.getUser({ email });
+  if (user)
+    return ResponseHandler.ErrorResponse(
+      res,
+      HTTP_BAD_REQUEST,
+      false,
+      'Invalid Email/Password',
+    );
+  return next();
+}
+
 export default {
   validateRegister,
+  checkIfUserExists,
 };
