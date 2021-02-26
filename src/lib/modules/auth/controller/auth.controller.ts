@@ -11,6 +11,7 @@ class AuthController {
       const hashedPassword = jwtHelper.hashPassword(password);
       const data = { email, password: hashedPassword };
       const user = await AuthRepository.register(data);
+      const token = jwtHelper.createToken(user.id);
       return ResponseHandler.SuccessResponse(
         response,
         HTTP_CREATED,
@@ -21,8 +22,8 @@ class AuthController {
             email: user.email,
             id: user.id,
             createdAt: user.createdAt,
-            updatedAt: user.updatedAt,
           },
+          token,
         },
       );
     } catch (err) {
