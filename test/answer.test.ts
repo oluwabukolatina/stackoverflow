@@ -55,12 +55,13 @@ describe('answer /answer', () => {
   it('should  answer a question', async () => {
     const res = await request(app)
       .post(`${ANSWER_URL}/${questionId}`)
-      .send({ answer: faker.lorem.paragraph(3), questionId })
+      .send({ answer: faker.lorem.paragraph(3), questionId,  })
       .set('X-Auth-Token', token);
+    console.log(res.body);
     expect(res.status).toEqual(HTTP_CREATED);
     expect(res.body.message).toEqual('Question Answered');
     expect(res.body.status).toEqual(true);
     expect(res.body).toHaveProperty('data');
-    expect(res.body.data).toHaveProperty('question');
+    expect(res.body.data).toHaveProperty('answer');
   });
 });
