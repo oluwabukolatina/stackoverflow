@@ -9,7 +9,6 @@ function auth(req: any, res: Response, next: NextFunction) {
     return ResponseHandler.ErrorResponse(
       res,
       HTTP_UNAUTHORIZED,
-      false,
       'No Token Found. Authorization Denied',
     );
 

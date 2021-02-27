@@ -8,5 +8,13 @@ class QuestionRepository {
       return e;
     }
   }
+
+  public static async findQuestions() {
+    try {
+      return await QuestionModel.findAll();
+    } catch (e) {
+      return e;
+    }
+  }
 }
 export default QuestionRepository;

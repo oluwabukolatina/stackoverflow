@@ -10,7 +10,6 @@ class DummyController {
       return ResponseHandler.SuccessResponse(
         response,
         HTTP_CREATED,
-        true,
         'Created Dummy',
         { dummy },
       );

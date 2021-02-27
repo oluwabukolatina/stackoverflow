@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b166d860-5a29-4aa8-9aa5-8fe18fa2cb37" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/modules/auth/controller/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/auth/controller/auth.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/modules/auth/utils/helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/auth/utils/helper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/modules/dummy/controller/dummy.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/dummy/controller/dummy.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/modules/question/controller/question.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/question/controller/question.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/modules/question/repository/question.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/question/repository/question.repository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/modules/question/route/question.route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/question/route/question.route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils/helpers/helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/helpers/helper.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/utils/middlewares/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/middlewares/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/utils/response-handlers/response-handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/response-handlers/response-handler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/auth.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/auth.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/question.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/question.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +85,7 @@
       <workItem from="1614224905988" duration="2530000" />
       <workItem from="1614267877954" duration="2657000" />
       <workItem from="1614280198101" duration="31650000" />
-      <workItem from="1614368775956" duration="18909000" />
+      <workItem from="1614368775956" duration="21521000" />
     </task>
     <servers />
   </component>

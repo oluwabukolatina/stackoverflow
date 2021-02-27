@@ -50,7 +50,6 @@ async function checkIfUserExists(
     return ResponseHandler.ErrorResponse(
       res,
       HTTP_BAD_REQUEST,
-      false,
       'Invalid Email/Password',
     );
   return next();
@@ -88,7 +87,6 @@ async function checkIfUserCanLogin(
     return ResponseHandler.ErrorResponse(
       res,
       HTTP_BAD_REQUEST,
-      false,
       'Invalid Email/Password',
     );
   return next();

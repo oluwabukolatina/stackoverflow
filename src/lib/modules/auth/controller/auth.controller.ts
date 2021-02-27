@@ -20,7 +20,6 @@ class AuthController {
       return ResponseHandler.SuccessResponse(
         response,
         HTTP_CREATED,
-        true,
         'User Created',
         {
           user: {
@@ -49,7 +48,6 @@ class AuthController {
         return ResponseHandler.SuccessResponse(
           response,
           HTTP_OK,
-          true,
           'User Logged In',
           { user: { email: user.email, id: user.id }, token },
         );
@@ -57,7 +55,6 @@ class AuthController {
       return ResponseHandler.ErrorResponse(
         response,
         HTTP_BAD_REQUEST,
-        false,
         'Invalid Credentials',
       );
     } catch (e) {

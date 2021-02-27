@@ -2,23 +2,17 @@ import { Response } from 'express';
 import { HTTP_INTERNAL_SERVER_ERROR } from '../status-codes/http-status-codes';
 
 export default class ResponseHandler {
-  static ErrorResponse(
-    res: Response,
-    statusCode: number,
-    status: boolean,
-    message = '',
-  ) {
-    return res.status(statusCode).json({ message, status });
-  }
+  static ErrorResponse = (res: Response, statusCode: number, message = '') => {
+    return res.status(statusCode).json({ message, status: false });
+  };
 
   static SuccessResponse(
     res: Response,
     statusCode: number,
-    status: boolean,
     message = '',
     data: any,
   ) {
-    return res.status(statusCode).json({ message, status, data });
+    return res.status(statusCode).json({ message, status: true, data });
   }
 
   static ServerErrorResponse = (res: Response) =>

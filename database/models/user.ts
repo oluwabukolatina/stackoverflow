@@ -21,6 +21,6 @@ const User = sequelize.define<UserInstance>(
   {},
 );
 
-User.hasMany(QuestionModel);
+// User.hasMany(QuestionModel);
 
 export default User;

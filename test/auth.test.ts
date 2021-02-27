@@ -9,7 +9,7 @@ import {
 import { AUTH_URL } from '../src/lib/utils/urls';
 
 describe('auth /auth', () => {
-  let user: { email: string } | any = null;
+  let email = '';
   beforeAll(async () => {
     const data = {
       email: faker.internet.email(),
@@ -17,7 +17,7 @@ describe('auth /auth', () => {
     };
     const res = await request(app).post(`${AUTH_URL}/register`).send(data);
     expect(res.status).toEqual(HTTP_CREATED);
-    user = res.body.data.user;
+    email = res.body.data.user.email;
   });
   it('should create a user', async () => {
     const res = await request(app).post(`${AUTH_URL}/register`).send({
@@ -51,7 +51,7 @@ describe('auth /auth', () => {
   });
   it('should not create a user that already exists', async () => {
     const data = {
-      email: user.email,
+      email,
       password: 'password',
     };
     const res = await request(app)
@@ -64,7 +64,7 @@ describe('auth /auth', () => {
   });
   it('should login a user', async () => {
     const res = await request(app).post(`${AUTH_URL}/login`).send({
-      email: user.email,
+      email,
       password: 'password',
     });
     expect(res.status).toEqual(HTTP_OK);
