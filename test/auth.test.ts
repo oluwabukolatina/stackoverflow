@@ -1,8 +1,6 @@
-import request, { Response } from 'supertest';
-import { expect } from 'chai';
+import request from 'supertest';
 import * as faker from 'faker';
 import app from '../src/app';
-import 'chai/register-should';
 import {
   HTTP_BAD_REQUEST,
   HTTP_CREATED,
@@ -12,127 +10,89 @@ import { AUTH_URL } from '../src/lib/utils/urls';
 
 describe('auth /auth', () => {
   let user: { email: string } | any = null;
-  before((done) => {
+  beforeAll(async () => {
     const data = {
       email: faker.internet.email(),
-      password: faker.random.word(),
+      password: 'password',
     };
-    request(app)
-      .post(`${AUTH_URL}/register`)
-      .send(data)
-      .expect(HTTP_CREATED)
-      .end((err: Error, res) => {
-        expect(res.status).to.eql(HTTP_CREATED);
-        user = res.body.data.user;
-        done();
-      });
+    const res = await request(app).post(`${AUTH_URL}/register`).send(data);
+    expect(res.status).toEqual(HTTP_CREATED);
+    user = res.body.data.user;
   });
-  it('should create a user', () => {
-    request(app)
-      .post(`${AUTH_URL}/register`)
-      .send({
-        email: faker.internet.email(),
-        password: faker.random.word(),
-      })
-      .expect(HTTP_CREATED)
-      .end((err: Error, res) => {
-        expect(res.status).to.eql(HTTP_CREATED);
-        expect(res.body.message).to.eql('User Created');
-        expect(res.body.status).to.eql(true);
-        expect(res.body.should.have.property('data'));
-      });
+  it('should create a user', async () => {
+    const res = await request(app).post(`${AUTH_URL}/register`).send({
+      email: faker.internet.email(),
+      password: faker.random.word(),
+    });
+    expect(res.status).toEqual(HTTP_CREATED);
+    expect(res.body.message).toEqual('User Created');
+    expect(res.body.status).toEqual(true);
+    expect(res.body).toHaveProperty('data');
   });
-  it('should not create a user if no email', () => {
-    request(app)
-      .post(`${AUTH_URL}/register`)
-      .send({
-        password: faker.random.word(),
-      })
-      .expect(HTTP_BAD_REQUEST)
-      .end((err: Error, res) => {
-        expect(res.status).to.eql(HTTP_BAD_REQUEST);
-        expect(res.body.message).to.eql('Unable to register');
-        expect(res.body.status).to.eql(false);
-        expect(res.body.should.have.property('error'));
-        expect(res.body.error[0].message).to.eql('email is required');
-      });
+  it('should not create a user if no email', async () => {
+    const res = await request(app).post(`${AUTH_URL}/register`).send({
+      password: faker.random.word(),
+    });
+    expect(res.status).toEqual(HTTP_BAD_REQUEST);
+    expect(res.body.message).toEqual('Unable to register');
+    expect(res.body.status).toEqual(false);
+    expect(res.body).toHaveProperty('error');
+    expect(res.body.error[0].message).toEqual('email is required');
   });
-  it('should not create a user if no password', () => {
-    request(app)
-      .post(`${AUTH_URL}/register`)
-      .send({
-        email: faker.internet.email(),
-      })
-      .expect(HTTP_BAD_REQUEST)
-      .end((err: Error, res) => {
-        expect(res.status).to.eql(HTTP_BAD_REQUEST);
-        expect(res.body.message).to.eql('Unable to register');
-        expect(res.body.status).to.eql(false);
-        expect(res.body.should.have.property('error'));
-        expect(res.body.error[0].message).to.eql('password is required');
-      });
+  it('should not create a user if no password', async () => {
+    const res = await request(app).post(`${AUTH_URL}/register`).send({
+      email: faker.internet.email(),
+    });
+    expect(res.status).toEqual(HTTP_BAD_REQUEST);
+    expect(res.body.message).toEqual('Unable to register');
+    expect(res.body.status).toEqual(false);
+    expect(res.body).toHaveProperty('error');
+    expect(res.body.error[0].message).toEqual('password is required');
   });
-  it('should not create a user that already exists', (done) => {
+  it('should not create a user that already exists', async () => {
     const data = {
       email: user.email,
       password: 'password',
     };
-    request(app)
+    const res = await request(app)
       .post(`${AUTH_URL}/register`)
       .send(data)
-      .expect(HTTP_BAD_REQUEST)
-      .end((err: Error, res) => {
-        expect(res.status).to.eql(HTTP_BAD_REQUEST);
-        expect(res.body.status).to.eql(false);
-        expect(res.body.message).to.eql('Invalid Email/Password');
-        done();
-      });
+      .expect(HTTP_BAD_REQUEST);
+    expect(res.status).toEqual(HTTP_BAD_REQUEST);
+    expect(res.body.status).toEqual(false);
+    expect(res.body.message).toEqual('Invalid Email/Password');
   });
-
-  it('should login a user', () => {
-    request(app)
-      .post(`${AUTH_URL}/login`)
-      .send({
-        email: faker.internet.email(),
-        password: faker.random.word(),
-      })
-      .expect(HTTP_OK)
-      .end((err: Error, res) => {
-        expect(res.status).to.eql(HTTP_OK);
-        expect(res.body.message).to.eql('User Created');
-        expect(res.body.status).to.eql(true);
-        expect(res.body.should.have.property('data'));
-      });
+  it('should login a user', async () => {
+    const res = await request(app).post(`${AUTH_URL}/login`).send({
+      email: user.email,
+      password: 'password',
+    });
+    expect(res.status).toEqual(HTTP_OK);
+    expect(res.body.message).toEqual('User Logged In');
+    expect(res.body.status).toEqual(true);
+    expect(res.body).toHaveProperty('data');
   });
-  it('should not login a user if no email', () => {
-    request(app)
+  it('should not login a user if no email', async () => {
+    const res = await request(app)
       .post(`${AUTH_URL}/login`)
       .send({
         password: faker.random.word(),
       })
-      .expect(HTTP_BAD_REQUEST)
-      .end((err: Error, res) => {
-        expect(res.status).to.eql(HTTP_BAD_REQUEST);
-        expect(res.body.message).to.eql('Unable to login');
-        expect(res.body.status).to.eql(false);
-        expect(res.body.should.have.property('error'));
-        expect(res.body.error[0].message).to.eql('email is required');
-      });
+      .expect(HTTP_BAD_REQUEST);
+    expect(res.status).toEqual(HTTP_BAD_REQUEST);
+    expect(res.body.message).toEqual('Unable to login');
+    expect(res.body.status).toEqual(false);
+    expect(res.body).toHaveProperty('error');
+    expect(res.body.error[0].message).toEqual('email is required');
   });
-  it('should not loign a user if no password', () => {
-    request(app)
-      .post(`${AUTH_URL}/login`)
-      .send({
-        email: faker.internet.email(),
-      })
-      .expect(HTTP_BAD_REQUEST)
-      .end((err: Error, res) => {
-        console.log(res.status);
-        expect(res.status).to.eql(HTTP_BAD_REQUEST);
-        expect(res.body.message).to.eql('Unable to login');
-        expect(res.body.status).to.eql(false);
-        expect(res.body.should.have.property('error'));
-        expect(res.body.error[0].message).to.eql('password is required');
-      });
+  it('should not loign a user if no password', async () => {
+    const res = await request(app).post(`${AUTH_URL}/login`).send({
+      email: faker.internet.email(),
+    });
+    expect(res.status).toEqual(HTTP_BAD_REQUEST);
+    expect(res.body.message).toEqual('Unable to login');
+    expect(res.body.status).toEqual(false);
+    expect(res.body).toHaveProperty('error');
+    expect(res.body.error[0].message).toEqual('password is required');
   });
 });

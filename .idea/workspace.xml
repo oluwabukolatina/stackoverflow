@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b166d860-5a29-4aa8-9aa5-8fe18fa2cb37" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/app.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/app.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/auth.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/auth.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/question.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/question.test.ts" afterDir="false" />
     </list>
@@ -59,11 +63,11 @@
       <recent name="$PROJECT_DIR$/src/lib/modules/dummy" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test" />
       <recent name="$PROJECT_DIR$/src/lib/utils/helpers" />
       <recent name="$PROJECT_DIR$/src/lib/utils/middlewares" />
       <recent name="$PROJECT_DIR$/src/lib/modules/auth/validations" />
       <recent name="$PROJECT_DIR$/src/lib/modules" />
-      <recent name="$PROJECT_DIR$/src/lib" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -77,7 +81,7 @@
       <workItem from="1614224905988" duration="2530000" />
       <workItem from="1614267877954" duration="2657000" />
       <workItem from="1614280198101" duration="31650000" />
-      <workItem from="1614368775956" duration="9868000" />
+      <workItem from="1614368775956" duration="14724000" />
     </task>
     <servers />
   </component>
