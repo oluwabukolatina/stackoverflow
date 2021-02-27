@@ -22,5 +22,15 @@ class QuestionRepository {
       return e;
     }
   }
+
+  public static async findQuestion(data: { id: number }) {
+    try {
+      return await QuestionModel.findOne({
+        where: data,
+      });
+    } catch (e) {
+      return e;
+    }
+  }
 }
 export default QuestionRepository;

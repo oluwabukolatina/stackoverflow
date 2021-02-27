@@ -6,6 +6,7 @@ import * as expressWinston from 'express-winston';
 import QuestionRoutes from './lib/modules/question/route/question.route';
 import DummyRoutes from './lib/modules/dummy/route/dummy.route';
 import AuthRoutes from './lib/modules/auth/route/auth.route';
+import AnswerRoutes from './lib/modules/answer/route/answer.route';
 
 /**
  * routes
@@ -21,12 +22,15 @@ class App {
 
   public authRoutes: AuthRoutes = new AuthRoutes();
 
+  public answerRoutes: AnswerRoutes = new AnswerRoutes();
+
   constructor() {
     this.app = express();
     this.config();
     this.questionRoutes.routes(this.app);
     this.dummyRoutes.routes(this.app);
     this.authRoutes.routes(this.app);
+    this.answerRoutes.routes(this.app);
     this.app.get('/', (req, res) =>
       res.send('Korapay Senior Developer Technical Test!'),
     );

@@ -11,7 +11,6 @@ function auth(req: any, res: Response, next: NextFunction) {
       HTTP_UNAUTHORIZED,
       'No Token Found. Authorization Denied',
     );
-
   try {
     /**
      * add uder fromm the payload

@@ -1,7 +1,10 @@
 import request from 'supertest';
 import faker from 'faker';
 import app from '../src/app';
-import { HTTP_CREATED, HTTP_OK } from "../src/lib/utils/status-codes/http-status-codes";
+import {
+  HTTP_CREATED,
+  HTTP_OK,
+} from '../src/lib/utils/status-codes/http-status-codes';
 import { AUTH_URL, QUESTIONS_URL } from '../src/lib/utils/urls';
 
 describe('questions /question', () => {
@@ -27,13 +30,11 @@ describe('questions /question', () => {
     expect(res.body.data).toHaveProperty('question');
   });
   it('should get all questions', async () => {
-    const res = await request(app)
-      .get(`${QUESTIONS_URL}`)
+    const res = await request(app).get(`${QUESTIONS_URL}`);
     expect(res.status).toEqual(HTTP_OK);
     expect(res.body.message).toEqual('Fetched Questions');
     expect(res.body.status).toEqual(true);
     expect(res.body).toHaveProperty('data');
     expect(res.body.data).toHaveProperty('questions');
   });
-
 });
