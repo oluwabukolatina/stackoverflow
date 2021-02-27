@@ -5,12 +5,12 @@ import app from '../src/app';
 import 'chai/register-should';
 import {
   HTTP_BAD_REQUEST,
-  HTTP_CREATED,
-} from '../src/lib/utils/status-codes/http-status-codes';
+  HTTP_CREATED, HTTP_OK
+} from "../src/lib/utils/status-codes/http-status-codes";
 import { AUTH_URL } from '../src/lib/utils/urls';
 
 describe('auth /auth', () => {
-  let user: any = null;
+  let user: { email: string } | any = null;
   before((done) => {
     const data = {
       email: faker.internet.email(),
@@ -85,6 +85,58 @@ describe('auth /auth', () => {
         expect(res.body.status).to.eql(false);
         expect(res.body.message).to.eql('Invalid Email/Password');
         done();
+      });
+  });
+
+
+
+
+
+
+
+  it('should login a user', () => {
+    request(app)
+      .post(`${AUTH_URL}/login`)
+      .send({
+        email: faker.internet.email(),
+        password: faker.random.word(),
+      })
+      .expect(HTTP_OK)
+      .end((err: Error, res) => {
+        expect(res.status).to.eql(HTTP_CREATED);
+        expect(res.body.message).to.eql('User Created');
+        expect(res.body.status).to.eql(true);
+        expect(res.body.should.have.property('data'));
+      });
+  });
+  it('should not login a user if no email', () => {
+    request(app)
+      .post(`${AUTH_URL}/login`)
+      .send({
+        password: faker.random.word(),
+      })
+      .expect(HTTP_BAD_REQUEST)
+      .end((err: Error, res) => {
+        expect(res.status).to.eql(HTTP_BAD_REQUEST);
+        expect(res.body.message).to.eql('Unable to login');
+        expect(res.body.status).to.eql(false);
+        expect(res.body.should.have.property('error'));
+        expect(res.body.error[0].message).to.eql('email is required');
+      });
+  });
+  it('should not loign a user if no password', () => {
+    request(app)
+      .post(`${AUTH_URL}/login`)
+      .send({
+        email: faker.internet.email(),
+      })
+      .expect(HTTP_BAD_REQUEST)
+      .end((err: Error, res) => {
+        expect(res.status).to.eql(HTTP_BAD_REQUEST);
+        expect(res.body.message).to.eql('Unable to login');
+        expect(res.body.status).to.eql(false);
+        expect(res.body.should.have.property('error'));
+        expect(res.body.error[0].message).to.eql('password is required');
       });
   });
 });
