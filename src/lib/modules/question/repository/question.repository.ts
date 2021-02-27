@@ -11,7 +11,9 @@ class QuestionRepository {
 
   public static async findQuestions() {
     try {
-      return await QuestionModel.findAll();
+      return await QuestionModel.findAll({
+        order: [['createdAt', 'DESC']],
+      });
     } catch (e) {
       return e;
     }
