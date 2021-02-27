@@ -6,17 +6,17 @@ import {
   HTTP_OK,
 } from '../../../utils/status-codes/http-status-codes';
 import AuthRepository from '../repository/auth.repository';
-import jwtHelper from '../utils/helper';
-import helper from '../../../utils/helpers/helper';
+import UserHelper from '../../../utils/helpers/helper';
+import AuthHelper from '../utils/helper';
 
 class AuthController {
   public register = async ({ body }: Request, response: Response) => {
     try {
       const { email, password } = body;
-      const hashedPassword = jwtHelper.hashPassword(password);
-      const data = { email, password: hashedPassword };
+      const hash = await AuthHelper.hashPassword(password);
+      const data = { email, password: hash };
       const user = await AuthRepository.register(data);
-      const token = jwtHelper.createToken(user.id);
+      const token = AuthHelper.createToken(user.id);
       return ResponseHandler.SuccessResponse(
         response,
         HTTP_CREATED,
@@ -38,14 +38,14 @@ class AuthController {
 
   public login = async ({ body }: Request, response: Response) => {
     const { email, password } = body;
-    const user = await helper.getUser({ email });
+    const user = await UserHelper.getUser({ email });
     /**
      * check if password matches
      */
     try {
-      const check = await jwtHelper.comparePassword(password, user.password);
+      const check = await AuthHelper.comparePassword(password, user.password);
       if (check) {
-        const token = jwtHelper.createToken(user.id);
+        const token = AuthHelper.createToken(user.id);
         return ResponseHandler.SuccessResponse(
           response,
           HTTP_OK,

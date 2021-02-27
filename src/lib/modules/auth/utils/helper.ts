@@ -1,18 +1,18 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
-const jwtHelper = {
+const AuthHelper = {
   createToken(id: number) {
-    return jwt.sign({ userId: id }, String(process.env.JWT_SECRET), {
-      expiresIn: '3600000',
+    return jwt.sign({ id }, String(process.env.JWT_SECRET), {
+      expiresIn: 7200,
     });
   },
-  hashPassword(password: string) {
-    return bcrypt.hashSync(password, 10);
+  async hashPassword(password: string) {
+    return bcrypt.hash(password, 10);
   },
   async comparePassword(password: string, hashed: string) {
     return bcrypt.compare(password, hashed);
   },
 };
 
-export default jwtHelper;
+export default AuthHelper;

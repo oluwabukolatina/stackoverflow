@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b166d860-5a29-4aa8-9aa5-8fe18fa2cb37" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/app.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/app.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/auth.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/auth.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/modules/auth/controller/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/auth/controller/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/modules/auth/utils/helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/auth/utils/helper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/modules/question/route/question.route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/question/route/question.route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/utils/helpers/helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/helpers/helper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/utils/middlewares/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/middlewares/auth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/question.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/question.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +81,7 @@
       <workItem from="1614224905988" duration="2530000" />
       <workItem from="1614267877954" duration="2657000" />
       <workItem from="1614280198101" duration="31650000" />
-      <workItem from="1614368775956" duration="14724000" />
+      <workItem from="1614368775956" duration="18909000" />
     </task>
     <servers />
   </component>
