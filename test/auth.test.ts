@@ -5,8 +5,9 @@ import app from '../src/app';
 import 'chai/register-should';
 import {
   HTTP_BAD_REQUEST,
-  HTTP_CREATED, HTTP_OK
-} from "../src/lib/utils/status-codes/http-status-codes";
+  HTTP_CREATED,
+  HTTP_OK,
+} from '../src/lib/utils/status-codes/http-status-codes';
 import { AUTH_URL } from '../src/lib/utils/urls';
 
 describe('auth /auth', () => {
@@ -88,12 +89,6 @@ describe('auth /auth', () => {
       });
   });
 
-
-
-
-
-
-
   it('should login a user', () => {
     request(app)
       .post(`${AUTH_URL}/login`)
@@ -103,7 +98,7 @@ describe('auth /auth', () => {
       })
       .expect(HTTP_OK)
       .end((err: Error, res) => {
-        expect(res.status).to.eql(HTTP_CREATED);
+        expect(res.status).to.eql(HTTP_OK);
         expect(res.body.message).to.eql('User Created');
         expect(res.body.status).to.eql(true);
         expect(res.body.should.have.property('data'));
@@ -132,6 +127,7 @@ describe('auth /auth', () => {
       })
       .expect(HTTP_BAD_REQUEST)
       .end((err: Error, res) => {
+        console.log(res.status);
         expect(res.status).to.eql(HTTP_BAD_REQUEST);
         expect(res.body.message).to.eql('Unable to login');
         expect(res.body.status).to.eql(false);
