@@ -4,6 +4,7 @@ export interface QuestionType extends Model {
   readonly id: number;
   body: string;
   title: string;
+  userId: number;
 }
 
 export type QuestionModelStatic = typeof Model & {

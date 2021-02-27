@@ -1,7 +1,11 @@
 import QuestionModel from '../../../../../database/models/question';
 
 class QuestionRepository {
-  public static async askQuestion(data: { title: string; body: string }) {
+  public static async askQuestion(data: {
+    title: string;
+    body: string;
+    userId: number;
+  }) {
     try {
       return await QuestionModel.create(data);
     } catch (e) {

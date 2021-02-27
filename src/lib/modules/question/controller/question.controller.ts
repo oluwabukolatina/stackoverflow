@@ -8,16 +8,23 @@ import {
 } from '../../../utils/status-codes/http-status-codes';
 
 class QuestionController {
-  public createQuestion = async (req: Request, response: Response) => {
+  public createQuestion = async (req: any, response: Response) => {
     const { title, body } = req.body;
-    const data = { title, body };
+    const data = { title, body, userId: req.user.id };
     try {
       const question = await QuestionRepository.askQuestion(data);
-      return ResponseHandler.SuccessResponse(
+      if (question) {
+        return ResponseHandler.SuccessResponse(
+          response,
+          HTTP_CREATED,
+          'Created Question',
+          { question },
+        );
+      }
+      return ResponseHandler.ErrorResponse(
         response,
-        HTTP_CREATED,
-        'Created Question',
-        { question },
+        HTTP_BAD_REQUEST,
+        'Unable to Create Question',
       );
     } catch (err) {
       return ResponseHandler.ServerErrorResponse(response);
