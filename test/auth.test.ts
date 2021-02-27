@@ -73,7 +73,8 @@ describe('auth /auth', () => {
   });
   it('should not create a user that already exists', (done) => {
     const data = {
-      email: user.email,password: 'password'
+      email: user.email,
+      password: 'password',
     };
     request(app)
       .post(`${AUTH_URL}/register`)
@@ -83,7 +84,7 @@ describe('auth /auth', () => {
         expect(res.status).to.eql(HTTP_BAD_REQUEST);
         expect(res.body.status).to.eql(false);
         expect(res.body.message).to.eql('Invalid Email/Password');
-        done()
+        done();
       });
   });
 });

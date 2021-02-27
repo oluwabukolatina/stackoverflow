@@ -5,18 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b166d860-5a29-4aa8-9aa5-8fe18fa2cb37" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/lib/utils/helpers/helper.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/utils/middlewares/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/modules/auth/controller/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/auth/controller/auth.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/modules/auth/route/auth.route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/auth/route/auth.route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/modules/auth/utils/helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/auth/utils/helper.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/modules/auth/validations/validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/auth/validations/validation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/modules/dummy/controller/dummy.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/dummy/controller/dummy.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/modules/question/controller/question.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/question/controller/question.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/modules/user/controller/dummy.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/user/controller/user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/modules/user/repository/dummy.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/user/repository/user.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/modules/user/route/dummy.route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/user/route/user.route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/modules/user/types/dummy-types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils/response-handlers/ResponseHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/response-handlers/response-handler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/modules/question/route/question.route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/modules/question/route/question.route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/utils/urls.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/urls.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/auth.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/auth.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/question.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/question.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,11 +67,11 @@
       <recent name="$PROJECT_DIR$/src/lib/modules/dummy" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/lib/utils/helpers" />
+      <recent name="$PROJECT_DIR$/src/lib/utils/middlewares" />
       <recent name="$PROJECT_DIR$/src/lib/modules/auth/validations" />
       <recent name="$PROJECT_DIR$/src/lib/modules" />
       <recent name="$PROJECT_DIR$/src/lib" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/database/models" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -86,7 +85,7 @@
       <workItem from="1614224905988" duration="2530000" />
       <workItem from="1614267877954" duration="2657000" />
       <workItem from="1614280198101" duration="31650000" />
-      <workItem from="1614368775956" duration="4116000" />
+      <workItem from="1614368775956" duration="9156000" />
     </task>
     <servers />
   </component>

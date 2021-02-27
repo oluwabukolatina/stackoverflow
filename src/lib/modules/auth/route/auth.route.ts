@@ -14,6 +14,14 @@ class AuthRoutes {
         validation.checkIfUserExists,
         this.authController.register,
       );
+
+    app
+      .route(`${AUTH_URL}/login`)
+      .post(
+        validation.validateLogin,
+        validation.checkIfUserCanLogin,
+        this.authController.login,
+      );
   };
 }
 export default AuthRoutes;
