@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 const AuthHelper = {
   createToken(id: number) {
     return jwt.sign({ id }, String(process.env.JWT_SECRET), {
-      expiresIn: 7200,
+      expiresIn: 720000,
     });
   },
   async hashPassword(password: string) {

@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../../src/lib/utils/database/database';
+import sequelize from '../utils/database';
 import { DummyInstance } from '../../src/lib/modules/dummy/types/dummy-types';
 
 const Dummy = sequelize.define<DummyInstance>(

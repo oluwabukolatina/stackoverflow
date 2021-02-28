@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../../src/lib/utils/database/database';
+import sequelize from '../utils/database';
 import { AnswerInstance } from '../../src/lib/modules/answer/types/answer-types';
 
 const Answer = sequelize.define<AnswerInstance>(

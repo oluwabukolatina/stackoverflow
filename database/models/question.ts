@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../../src/lib/utils/database/database';
+import sequelize from '../utils/database';
 import { QuestionModelStatic } from '../../src/lib/modules/question/types/question-types';
 import Answer from './answer';
 
