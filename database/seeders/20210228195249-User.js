@@ -1,44 +1,26 @@
-import AuthHelper from '../../src/lib/modules/auth/utils/helper';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const bcrypt = require('bcrypt');
 
 module.exports = {
-  up: (queryInterface) =>
+  up: async (queryInterface) =>
     queryInterface.bulkInsert(
       'Users',
       [
         {
           email: 'Jaylon80@hotmail.com',
-          password: AuthHelper.hashPassword('password'),
+          password: await bcrypt.hash('password', 10),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           email: 'Forrest65@gmail.com',
-          password: AuthHelper.hashPassword('password'),
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          email: 'Jabari.Sipes10@gmail.com',
-          password: AuthHelper.hashPassword('password'),
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-
-        {
-          email: 'Addie.Macejkovic79@gmail.com',
-          password: AuthHelper.hashPassword('password'),
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          email: 'Carmela_Parker@hotmail.com',
-          password: AuthHelper.hashPassword('password'),
+          password: await bcrypt.hash('password', 10),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           email: 'Muriel92@hotmail.com',
-          password: AuthHelper.hashPassword('password'),
+          password: await bcrypt.hash('password', 10),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
