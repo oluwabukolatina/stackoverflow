@@ -57,7 +57,6 @@ describe('answer /answer', () => {
       .post(`${ANSWER_URL}/${questionId}`)
       .send({ answer: faker.lorem.paragraph(3), questionId,  })
       .set('X-Auth-Token', token);
-    console.log(res.body);
     expect(res.status).toEqual(HTTP_CREATED);
     expect(res.body.message).toEqual('Question Answered');
     expect(res.body.status).toEqual(true);
