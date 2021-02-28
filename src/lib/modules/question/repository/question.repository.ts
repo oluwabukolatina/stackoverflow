@@ -33,5 +33,18 @@ class QuestionRepository {
       return e;
     }
   }
+
+  public static updateQuestion = async (
+    values: { upvotes: number } | { downvotes: number },
+    options: { id: number },
+  ) => {
+    try {
+      return await QuestionModel.update(values, {
+        where: options,
+      });
+    } catch (e) {
+      return e;
+    }
+  };
 }
 export default QuestionRepository;

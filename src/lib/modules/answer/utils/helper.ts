@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import QuestionRepository from '../../question/repository/question.repository';
 
 const QuestionHelper = {
@@ -8,12 +7,6 @@ const QuestionHelper = {
     } catch (e) {
       return e;
     }
-  },
-  async hashPassword(password: string) {
-    return bcrypt.hash(password, 10);
-  },
-  async comparePassword(password: string, hashed: string) {
-    return bcrypt.compare(password, hashed);
   },
 };
 

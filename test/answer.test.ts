@@ -55,7 +55,7 @@ describe('answer /answer', () => {
   it('should  answer a question', async () => {
     const res = await request(app)
       .post(`${ANSWER_URL}/${questionId}`)
-      .send({ answer: faker.lorem.paragraph(3), questionId,  })
+      .send({ answer: faker.lorem.paragraph(3), questionId })
       .set('X-Auth-Token', token);
     expect(res.status).toEqual(HTTP_CREATED);
     expect(res.body.message).toEqual('Question Answered');
