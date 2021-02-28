@@ -20,9 +20,7 @@ class AnswerController {
           response,
           HTTP_CREATED,
           'Question Answered',
-          {
-            answer: answer.answer,
-          },
+          { answered: { answer: answer.answer, id: answer.id } },
         );
       }
       return ResponseHandler.ErrorResponse(

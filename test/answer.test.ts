@@ -4,13 +4,14 @@ import app from '../src/app';
 import {
   HTTP_BAD_REQUEST,
   HTTP_CREATED,
-  HTTP_NOT_FOUND,
-} from '../src/lib/utils/status-codes/http-status-codes';
+  HTTP_NOT_FOUND, HTTP_OK
+} from "../src/lib/utils/status-codes/http-status-codes";
 import { ANSWER_URL, AUTH_URL, QUESTIONS_URL } from '../src/lib/utils/urls';
 
 describe('answer /answer', () => {
   let token = '';
   let questionId: '';
+  let answerId: '';
   beforeAll(async () => {
     const data = {
       email: faker.internet.email(),
@@ -28,6 +29,15 @@ describe('answer /answer', () => {
     expect(res.status).toEqual(HTTP_CREATED);
     questionId = res.body.data.question.id;
   });
+  beforeAll(async () => {
+    const res = await request(app)
+      .post(`${ANSWER_URL}/${questionId}`)
+      .send({ answer: faker.lorem.paragraph(3) })
+      .set('X-Auth-Token', token);
+    expect(res.status).toEqual(HTTP_CREATED);
+    answerId = res.body.data.answered.id;
+  });
+
   it('should not create an answer if field not filled', async () => {
     const res = await request(app)
       .post(`${ANSWER_URL}/${Number(questionId)}`)
@@ -61,6 +71,30 @@ describe('answer /answer', () => {
     expect(res.body.message).toEqual('Question Answered');
     expect(res.body.status).toEqual(true);
     expect(res.body).toHaveProperty('data');
-    expect(res.body.data).toHaveProperty('answer');
+    expect(res.body.data).toHaveProperty('answered');
+  });
+
+  it('shold upvote an answer', async () => {
+    console.log(`${ANSWER_URL}/upvote/${answerId}`);
+
+    const res = await request(app)
+      .put(`${ANSWER_URL}/upvote/${answerId}`)
+      .set('X-Auth-Token', token);
+    expect(res.status).toEqual(HTTP_OK);
+    expect(res.body.message).toEqual('Upvoted Answer');
+    expect(res.body.status).toEqual(true);
+    expect(res.body).toHaveProperty('data');
+    expect(res.body.data).toHaveProperty('updated');
+  });
+
+  it('shoould downvote an answer', async () => {
+    const res = await request(app)
+      .put(`${ANSWER_URL}/downvote/${answerId}`)
+      .set('X-Auth-Token', token);
+    expect(res.status).toEqual(HTTP_OK);
+    expect(res.body.message).toEqual('Downvoted Answer');
+    expect(res.body.status).toEqual(true);
+    expect(res.body).toHaveProperty('data');
+    expect(res.body.data).toHaveProperty('updated');
   });
 });
