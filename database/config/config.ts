@@ -1,10 +1,12 @@
+import { config } from 'dotenv';
 
-require('dotenv').config();
-module.exports ={
+config();
+
+module.exports = {
   development: {
-    username: 'root',
-    password: 'root',
-    database: 'stac4',
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: 'mysql',
   },
@@ -23,13 +25,3 @@ module.exports ={
     dialect: 'mysql',
   },
 };
-
-//{
-//  ""development": {
-//    username: 'root',
-//    password: 'root',
-//    database: 'stac4',
-//    host: process.env.DB_HOST,
-//    dialect: 'mysql',
-//  },
-//};

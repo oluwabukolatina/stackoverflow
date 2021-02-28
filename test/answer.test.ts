@@ -4,11 +4,13 @@ import app from '../src/app';
 import {
   HTTP_BAD_REQUEST,
   HTTP_CREATED,
-  HTTP_NOT_FOUND, HTTP_OK
-} from "../src/lib/utils/status-codes/http-status-codes";
+  HTTP_NOT_FOUND,
+  HTTP_OK,
+} from '../src/lib/utils/status-codes/http-status-codes';
 import { ANSWER_URL, AUTH_URL, QUESTIONS_URL } from '../src/lib/utils/urls';
 
 describe('answer /answer', () => {
+  console.log({ answer: faker.lorem.paragraph(3) });
   let token = '';
   let questionId: '';
   let answerId: '';
@@ -37,7 +39,6 @@ describe('answer /answer', () => {
     expect(res.status).toEqual(HTTP_CREATED);
     answerId = res.body.data.answered.id;
   });
-
   it('should not create an answer if field not filled', async () => {
     const res = await request(app)
       .post(`${ANSWER_URL}/${Number(questionId)}`)
@@ -75,8 +76,6 @@ describe('answer /answer', () => {
   });
 
   it('shold upvote an answer', async () => {
-    console.log(`${ANSWER_URL}/upvote/${answerId}`);
-
     const res = await request(app)
       .put(`${ANSWER_URL}/upvote/${answerId}`)
       .set('X-Auth-Token', token);
