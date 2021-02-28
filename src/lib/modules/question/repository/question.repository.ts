@@ -17,6 +17,7 @@ class QuestionRepository {
     try {
       return await QuestionModel.findAll({
         order: [['createdAt', 'DESC']],
+        include: ['answers'],
       });
     } catch (e) {
       return e;

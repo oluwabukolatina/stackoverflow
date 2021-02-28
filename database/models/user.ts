@@ -1,7 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../../src/lib/utils/database/database';
 import { UserInstance } from '../../src/lib/modules/user/types/user-types';
-import QuestionModel from './question';
 
 const User = sequelize.define<UserInstance>(
   'User',
@@ -20,5 +19,4 @@ const User = sequelize.define<UserInstance>(
   },
   {},
 );
-User.hasMany(QuestionModel, { as: 'questions', foreignKey: 'userId' });
 export default User;
