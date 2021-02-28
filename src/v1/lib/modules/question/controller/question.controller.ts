@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, RequestHandler, Response } from 'express';
 import QuestionRepository from '../repository/question.repository';
 import ResponseHandler from '../../../utils/response-handlers/response-handler';
 import {
@@ -32,7 +32,7 @@ class QuestionController {
     }
   };
 
-  public getAllQuestions = async (request: Request, response: Response) => {
+  public getAllQuestions: RequestHandler = async (request, response) => {
     try {
       const questions = await QuestionRepository.findQuestions();
       if (questions) {
@@ -53,7 +53,7 @@ class QuestionController {
     }
   };
 
-  public upvoteQuestion = async (req: Request, res: Response) => {
+  public upvoteQuestion: RequestHandler = async (req, res) => {
     try {
       const question = await QuestionHelper.findQuestion({
         id: Number(req.params.id),
@@ -90,7 +90,7 @@ class QuestionController {
     }
   };
 
-  public downvoteQuestion = async (req: Request, res: Response) => {
+  public downvoteQuestion: RequestHandler = async (req, res) => {
     try {
       const question = await QuestionHelper.findQuestion({
         id: Number(req.params.id),

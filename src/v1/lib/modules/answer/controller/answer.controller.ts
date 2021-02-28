@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { RequestHandler, Response } from 'express';
 import AnswerRepository from '../repository/answer.repository';
 import ResponseHandler from '../../../utils/response-handlers/response-handler';
 import {
@@ -33,7 +33,7 @@ class AnswerController {
     }
   };
 
-  public upvoteAnswer = async (req: Request, res: Response) => {
+  public upvoteAnswer: RequestHandler = async (req, res) => {
     try {
       const answer = await AnswerRepository.findAnswer({
         id: Number(req.params.id),
@@ -70,7 +70,7 @@ class AnswerController {
     }
   };
 
-  public downvoteAnswer = async (req: Request, res: Response) => {
+  public downvoteAnswer: RequestHandler = async (req, res) => {
     try {
       const answer = await AnswerRepository.findAnswer({
         id: Number(req.params.id),

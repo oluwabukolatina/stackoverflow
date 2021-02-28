@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, RequestHandler, Response } from 'express';
 import ResponseHandler from '../../../utils/response-handlers/response-handler';
 import {
   HTTP_BAD_REQUEST,
@@ -10,7 +10,7 @@ import UserHelper from '../../../utils/helpers/helper';
 import AuthHelper from '../utils/helper';
 
 class AuthController {
-  public register = async ({ body }: Request, response: Response) => {
+  public register: RequestHandler = async ({ body }, response) => {
     try {
       const { email, password } = body;
       const hash = await AuthHelper.hashPassword(password);
@@ -35,7 +35,7 @@ class AuthController {
     }
   };
 
-  public login = async ({ body }: Request, response: Response) => {
+  public login: RequestHandler = async ({ body }, response) => {
     const { email, password } = body;
     const user = await UserHelper.getUser({ email });
     /**
