@@ -31,11 +31,9 @@ class QuestionController {
       return ResponseHandler.ServerErrorResponse(response);
     }
   };
-
-  public getAllQuestions = async (response: Response) => {
+  public getAllQuestions = async (request: Request, response: Response) => {
     try {
       const questions = await QuestionRepository.findQuestions();
-      console.log(questions);
       if (questions) {
         return ResponseHandler.SuccessResponse(
           response,
@@ -50,11 +48,9 @@ class QuestionController {
         'Unable to get questions',
       );
     } catch (e) {
-      console.log(e);
-      // return ResponseHandler.ServerErrorResponse(response);
+      return ResponseHandler.ServerErrorResponse(response);
     }
   };
-
   public upvoteQuestion = async (req: Request, res: Response) => {
     try {
       const question = await QuestionHelper.findQuestion({

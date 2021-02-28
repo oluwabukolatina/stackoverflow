@@ -40,7 +40,6 @@ describe('questions /question', () => {
   });
   it('should get all questions', async () => {
     const res = await request(app).get(`${QUESTIONS_URL}`);
-    console.log(res);
     expect(res.status).toEqual(HTTP_OK);
     expect(res.body.message).toEqual('Fetched Questions');
     expect(res.body.status).toEqual(true);

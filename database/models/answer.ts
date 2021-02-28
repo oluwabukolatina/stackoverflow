@@ -16,7 +16,9 @@ const Answer = sequelize.define<AnswerInstance>(
     userId: {
       type: DataTypes.INTEGER,
     },
-    questionId: {type: DataTypes.INTEGER}
+    questionId: { type: DataTypes.INTEGER },
+    upvotes: { type: DataTypes.INTEGER, defaultValue: 0 },
+    downvotes: { type: DataTypes.INTEGER, defaultValue: 0 },
   },
   {},
 );
