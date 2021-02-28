@@ -5,8 +5,8 @@ import {
   HTTP_BAD_REQUEST,
   HTTP_CREATED,
   HTTP_OK,
-} from '../src/lib/utils/status-codes/http-status-codes';
-import { AUTH_URL } from '../src/lib/utils/urls';
+} from '../src/v1/lib/utils/status-codes/http-status-codes';
+import { AUTH_URL } from '../src/v1/lib/utils/urls';
 
 describe('auth /auth', () => {
   let email = '';

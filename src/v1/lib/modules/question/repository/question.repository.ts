@@ -1,4 +1,4 @@
-import QuestionModel from '../../../../../database/models/question';
+import QuestionModel from '../../../../../../database/models/question';
 
 class QuestionRepository {
   public static async askQuestion(data: {
@@ -20,7 +20,6 @@ class QuestionRepository {
         include: ['answers'],
       });
     } catch (e) {
-      console.log(e);
       return e;
     }
   }

@@ -3,10 +3,10 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
-import QuestionRoutes from './lib/modules/question/route/question.route';
-import DummyRoutes from './lib/modules/dummy/route/dummy.route';
-import AuthRoutes from './lib/modules/auth/route/auth.route';
-import AnswerRoutes from './lib/modules/answer/route/answer.route';
+import QuestionRoutes from './v1/lib/modules/question/route/question.route';
+import DummyRoutes from './v1/lib/modules/dummy/route/dummy.route';
+import AuthRoutes from './v1/lib/modules/auth/route/auth.route';
+import AnswerRoutes from './v1/lib/modules/answer/route/answer.route';
 
 /**
  * routes

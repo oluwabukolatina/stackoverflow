@@ -1,4 +1,4 @@
-import User from '../../../../../database/models/user';
+import User from '../../../../../../database/models/user';
 
 class UserRepository {
   public static async getUser(data: { email: string }) {

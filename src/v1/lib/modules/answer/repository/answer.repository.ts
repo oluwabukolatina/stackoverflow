@@ -1,4 +1,4 @@
-import Answer from '../../../../../database/models/answer';
+import Answer from '../../../../../../database/models/answer';
 
 class AnswerRepository {
   public static async create(data: {

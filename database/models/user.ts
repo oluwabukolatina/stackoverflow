@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../utils/database';
-import { UserInstance } from '../../src/lib/modules/user/types/user-types';
+import { UserInstance } from '../../src/v1/lib/modules/user/types/user-types';
 
 const User = sequelize.define<UserInstance>(
   'User',

@@ -12,6 +12,8 @@ module.exports = {
 
           createdAt: new Date(),
           updatedAt: new Date(),
+          downvotes: 0,
+          upvotes: 0,
         },
 
         {
@@ -21,6 +23,8 @@ module.exports = {
             'Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum',
           createdAt: new Date(),
           updatedAt: new Date(),
+          downvotes: 0,
+          upvotes: 0,
         },
 
         {
@@ -30,6 +34,8 @@ module.exports = {
             'Sit sed ducimus commodi ea voluptatem voluptates. Est modi quae ab saepe exercitationem sint et. Ut dicta dicta doloremque fuga cupiditate.',
           createdAt: new Date(),
           updatedAt: new Date(),
+          downvotes: 0,
+          upvotes: 0,
         },
         {
           userId: 2,
@@ -38,6 +44,8 @@ module.exports = {
             'Molestiae voluptas aut consequatur rerum. Labore quibusdam eos sequi quibusdam soluta ex ad. Sit libero excepturi quo ducimus blanditiis sit. Magnam reprehenderit soluta quisquam facere .',
           createdAt: new Date(),
           updatedAt: new Date(),
+          downvotes: 0,
+          upvotes: 0,
         },
 
         {
@@ -47,6 +55,8 @@ module.exports = {
             'Inventore eveniet sit eos illum ad illum. Recusandae maxime atque quia quia praesentium sit quis. Ipsum error quae est nisi hic cum. Consequatur dolores qui non cumque et voluptas cum ut aliquid. Expedita quo et id rem.',
           createdAt: new Date(),
           updatedAt: new Date(),
+          downvotes: 0,
+          upvotes: 0,
         },
       ],
       {},

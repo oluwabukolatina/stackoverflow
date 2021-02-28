@@ -1,4 +1,4 @@
-import User from '../../../../../database/models/user';
+import User from '../../../../../../database/models/user';
 
 class AuthRepository {
   public static async register(data: { password: string; email: string }) {

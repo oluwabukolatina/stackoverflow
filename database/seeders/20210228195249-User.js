@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const bcrypt = require('bcrypt');
+const faker = require('faker');
 
 module.exports = {
   up: async (queryInterface) =>
@@ -7,19 +8,31 @@ module.exports = {
       'Users',
       [
         {
-          email: 'Jaylon80@hotmail.com',
+          email: faker.internet.email(),
           password: await bcrypt.hash('password', 10),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          email: 'Forrest65@gmail.com',
+          email: faker.internet.email(),
           password: await bcrypt.hash('password', 10),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          email: 'Muriel92@hotmail.com',
+          email: faker.internet.email(),
+          password: await bcrypt.hash('password', 10),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          email: faker.internet.email(),
+          password: await bcrypt.hash('password', 10),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          email: faker.internet.email(),
           password: await bcrypt.hash('password', 10),
           createdAt: new Date(),
           updatedAt: new Date(),

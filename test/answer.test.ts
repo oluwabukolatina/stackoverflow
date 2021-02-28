@@ -6,8 +6,8 @@ import {
   HTTP_CREATED,
   HTTP_NOT_FOUND,
   HTTP_OK,
-} from '../src/lib/utils/status-codes/http-status-codes';
-import { ANSWER_URL, AUTH_URL, QUESTIONS_URL } from '../src/lib/utils/urls';
+} from '../src/v1/lib/utils/status-codes/http-status-codes';
+import { ANSWER_URL, AUTH_URL, QUESTIONS_URL } from '../src/v1/lib/utils/urls';
 
 describe('answer /answer', () => {
   console.log({ answer: faker.lorem.paragraph(3) });

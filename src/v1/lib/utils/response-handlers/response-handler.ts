@@ -24,7 +24,7 @@ export default class ResponseHandler {
     res: Response,
     statusCode: number,
     status: boolean,
-    error: any,
+    error: { message: string }[],
     message: string,
   ) {
     return res.status(statusCode).json({ status, message, error });

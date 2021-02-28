@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../utils/database';
-import { QuestionModelStatic } from '../../src/lib/modules/question/types/question-types';
+import { QuestionModelStatic } from '../../src/v1/lib/modules/question/types/question-types';
 import Answer from './answer';
 
 const QuestionModel = <QuestionModelStatic>sequelize.define('Question', {
