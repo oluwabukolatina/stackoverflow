@@ -31,6 +31,7 @@ class QuestionController {
       return ResponseHandler.ServerErrorResponse(response);
     }
   };
+
   public getAllQuestions = async (request: Request, response: Response) => {
     try {
       const questions = await QuestionRepository.findQuestions();
@@ -51,6 +52,7 @@ class QuestionController {
       return ResponseHandler.ServerErrorResponse(response);
     }
   };
+
   public upvoteQuestion = async (req: Request, res: Response) => {
     try {
       const question = await QuestionHelper.findQuestion({
@@ -59,7 +61,7 @@ class QuestionController {
       question.upvotes += 1;
       const values = { upvotes: question.upvotes };
       const options = { id: Number(req.params.id) };
-      await QuestionRepository.updateQuestion(values, options)
+      return await QuestionRepository.updateQuestion(values, options)
         .then(() => {
           return ResponseHandler.SuccessResponse(
             res,
@@ -87,6 +89,7 @@ class QuestionController {
       return ResponseHandler.ServerErrorResponse(res);
     }
   };
+
   public downvoteQuestion = async (req: Request, res: Response) => {
     try {
       const question = await QuestionHelper.findQuestion({
@@ -95,7 +98,7 @@ class QuestionController {
       question.downvotes += 1;
       const values = { downvotes: question.downvotes };
       const options = { id: Number(req.params.id) };
-      await QuestionRepository.updateQuestion(values, options)
+      return await QuestionRepository.updateQuestion(values, options)
         .then(() => {
           return ResponseHandler.SuccessResponse(
             res,

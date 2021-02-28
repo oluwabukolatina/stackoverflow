@@ -1,7 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 import ResponseHandler from '../../../utils/response-handlers/response-handler';
-import { HTTP_BAD_REQUEST } from '../../../utils/status-codes/http-status-codes';
+import {
+  HTTP_BAD_REQUEST,
+  HTTP_NOT_FOUND,
+} from '../../../utils/status-codes/http-status-codes';
+import AnswerRepository from '../repository/answer.repository';
 
 async function validateAnswer(
   { body }: Request,
@@ -25,6 +29,29 @@ async function validateAnswer(
   return next();
 }
 
+async function checkIfAnswerExists(
+  { params }: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  try {
+    const answer = await AnswerRepository.findAnswer({
+      id: Number(params.id),
+    });
+    if (answer) {
+      return next();
+    }
+    return ResponseHandler.ErrorResponse(
+      res,
+      HTTP_NOT_FOUND,
+      'Answer Not Found',
+    );
+  } catch (e) {
+    return ResponseHandler.ServerErrorResponse(res);
+  }
+}
+
 export default {
   validateAnswer,
+  checkIfAnswerExists,
 };

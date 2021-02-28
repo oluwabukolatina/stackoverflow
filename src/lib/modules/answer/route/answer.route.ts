@@ -20,6 +20,28 @@ class AnswerRoutes {
         questionValidation.checkIfQuestionExists,
         this.answerController.answerQuestion,
       );
+
+    /**
+     * only logged in user can upvote answers
+     */
+    app
+      .route(`${ANSWER_URL}/upvote/:id`)
+      .put(
+        auth,
+        validation.checkIfAnswerExists,
+        this.answerController.upvoteAnswer,
+      );
+
+    /**
+     * only logged in user can downvote questions
+     */
+    app
+      .route(`${ANSWER_URL}/downvote/:id`)
+      .put(
+        auth,
+        validation.checkIfAnswerExists,
+        this.answerController.downvoteAnswer,
+      );
   };
 }
 export default AnswerRoutes;

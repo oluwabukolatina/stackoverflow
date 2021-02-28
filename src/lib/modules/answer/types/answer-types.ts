@@ -5,4 +5,6 @@ export interface AnswerInstance extends Model {
   answer: string;
   userId: number;
   questionId: number;
+  upvote: number;
+  downvotes: number;
 }

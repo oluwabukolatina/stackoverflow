@@ -1,9 +1,10 @@
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import AnswerRepository from '../repository/answer.repository';
 import ResponseHandler from '../../../utils/response-handlers/response-handler';
 import {
   HTTP_BAD_REQUEST,
   HTTP_CREATED,
+  HTTP_OK,
 } from '../../../utils/status-codes/http-status-codes';
 
 class AnswerController {
@@ -31,6 +32,80 @@ class AnswerController {
       );
     } catch (err) {
       return ResponseHandler.ServerErrorResponse(response);
+    }
+  };
+
+  public upvoteAnswer = async (req: Request, res: Response) => {
+    try {
+      const answer = await AnswerRepository.findAnswer({
+        id: Number(req.params.id),
+      });
+      answer.upvotes += 1;
+      const values = { upvotes: answer.upvotes };
+      const options = { id: Number(req.params.id) };
+      return await AnswerRepository.updateAnswer(values, options)
+        .then(() => {
+          return ResponseHandler.SuccessResponse(
+            res,
+            HTTP_OK,
+            'Upvoted Answer',
+
+            {
+              updated: {
+                answerId: answer.id,
+                answer: answer.answer,
+                upvotes: answer.upvotes,
+                downvotes: answer.downvotes,
+              },
+            },
+          );
+        })
+        .catch(() => {
+          return ResponseHandler.ErrorResponse(
+            res,
+            HTTP_BAD_REQUEST,
+            'Unable to upvote',
+          );
+        });
+    } catch (e) {
+      return ResponseHandler.ServerErrorResponse(res);
+    }
+  };
+
+  public downvoteAnswer = async (req: Request, res: Response) => {
+    try {
+      const answer = await AnswerRepository.findAnswer({
+        id: Number(req.params.id),
+      });
+      answer.downvotes += 1;
+      const values = { downvotes: answer.downvotes };
+      const options = { id: Number(req.params.id) };
+      return await AnswerRepository.updateAnswer(values, options)
+        .then(() => {
+          return ResponseHandler.SuccessResponse(
+            res,
+            HTTP_OK,
+            'Downvoted Answer',
+
+            {
+              updated: {
+                answerId: answer.id,
+                answer: answer.answer,
+                upvotes: answer.upvotes,
+                downvotes: answer.downvotes,
+              },
+            },
+          );
+        })
+        .catch(() => {
+          return ResponseHandler.ErrorResponse(
+            res,
+            HTTP_BAD_REQUEST,
+            'Unable to upvote',
+          );
+        });
+    } catch (e) {
+      return ResponseHandler.ServerErrorResponse(res);
     }
   };
 }
