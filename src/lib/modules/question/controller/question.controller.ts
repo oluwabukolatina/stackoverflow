@@ -35,6 +35,7 @@ class QuestionController {
   public getAllQuestions = async (response: Response) => {
     try {
       const questions = await QuestionRepository.findQuestions();
+      console.log(questions);
       if (questions) {
         return ResponseHandler.SuccessResponse(
           response,
@@ -49,7 +50,8 @@ class QuestionController {
         'Unable to get questions',
       );
     } catch (e) {
-      return ResponseHandler.ServerErrorResponse(response);
+      console.log(e);
+      // return ResponseHandler.ServerErrorResponse(response);
     }
   };
 

@@ -20,6 +20,7 @@ class QuestionRepository {
         include: ['answers'],
       });
     } catch (e) {
+      console.log(e);
       return e;
     }
   }
