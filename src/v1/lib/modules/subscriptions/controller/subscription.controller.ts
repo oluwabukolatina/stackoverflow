@@ -19,26 +19,20 @@ class SubscriptionController {
         /**
          * notify user about being subscribed
          */
-        const sent = await SubscriptionHelper.sendEmailToUser(
+        SubscriptionHelper.sendEmailToUser(
           Helper.createSubscriptionNotification(req.user.email),
         );
-        if (sent) {
-          return ResponseHandler.SuccessResponse(
-            response,
-            HTTP_CREATED,
-            'User Subscribed',
-            {
-              subscribe: {
-                id: subscribe.id,
-                subscriberEmail: subscribe.email,
-              },
-            },
-          );
-        }
-        ResponseHandler.ErrorResponse(
+
+        return ResponseHandler.SuccessResponse(
           response,
           HTTP_CREATED,
-          'User Subscribed, No Email Delivered as it Failed',
+          'User Subscribed',
+          {
+            subscribe: {
+              id: subscribe.id,
+              subscriberEmail: subscribe.email,
+            },
+          },
         );
       }
       return ResponseHandler.ErrorResponse(

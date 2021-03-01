@@ -18,17 +18,7 @@ class AnswerController {
       };
       const answer = await AnswerRepository.create(data);
       if (answer) {
-        const sent = await SubscriptionHelper.sendEmailToSubscribers(
-          req.params.id,
-        );
-        if (sent) {
-          return ResponseHandler.SuccessResponse(
-            response,
-            HTTP_CREATED,
-            'Question Answered',
-            { answered: { answer: answer.answer, id: answer.id } },
-          );
-        }
+        SubscriptionHelper.sendEmailToSubscribers(req.params.id);
         return ResponseHandler.SuccessResponse(
           response,
           HTTP_CREATED,

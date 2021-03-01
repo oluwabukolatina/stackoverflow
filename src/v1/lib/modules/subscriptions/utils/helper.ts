@@ -19,7 +19,7 @@ const SubscriptionHelper = {
     });
   },
   sendEmailToUser(options: any) {
-    return this.createTransporter().sendMail(options);
+    this.createTransporter().sendMail(options);
   },
   async sendEmailToSubscribers(id: number) {
     const question = await QuestionHelper.findQuestion({ id });
@@ -30,7 +30,7 @@ const SubscriptionHelper = {
       question.title,
       subscribers,
     );
-    return this.createTransporter().sendMail(options);
+    this.createTransporter().sendMail(options);
   },
 };
 
