@@ -24,8 +24,6 @@ what is required so that your work will be appropriate and easier.
 ## Getting Started
 >  [Technologies](#technologies-used) &middot; [Testing Tools](#testing-tools) &middot; [Installations](#installations) &middot; [API Endpoints](#api-endpoints) &middot; [Tests](#tests) &middot; [Author](#author)
 ---
-### Heroku App
-- Application was deployed to Heroku. Use public URL https://be-bukola-korapay.herokuapp.com with API endpoints.
 ### Postman
 -API Documentation was generated with [postman](https://documenter.getpostman.com/view/4223397/TWDditWC).
 #### Setup
