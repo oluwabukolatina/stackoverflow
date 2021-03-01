@@ -6,20 +6,29 @@ import {
   HTTP_CREATED,
   HTTP_OK,
 } from '../../../utils/status-codes/http-status-codes';
-import Helper from '../../../utils/helpers/helper';
 import SubscriptionHelper from '../../subscriptions/utils/helper';
-import question from '../../../../../../database/models/question';
 
 class AnswerController {
   public answerQuestion = async (req: any, response: Response) => {
     try {
-      const answer = await AnswerRepository.create({
+      const data = {
         questionId: Number(req.params.id),
         answer: req.body.answer,
         userId: req.user.id,
-      });
+      };
+      const answer = await AnswerRepository.create(data);
       if (answer) {
-        await SubscriptionHelper.sendEmailToSubscribers(req.params.id);
+        const sent = await SubscriptionHelper.sendEmailToSubscribers(
+          req.params.id,
+        );
+        if (sent) {
+          return ResponseHandler.SuccessResponse(
+            response,
+            HTTP_CREATED,
+            'Question Answered',
+            { answered: { answer: answer.answer, id: answer.id } },
+          );
+        }
         return ResponseHandler.SuccessResponse(
           response,
           HTTP_CREATED,

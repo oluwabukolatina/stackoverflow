@@ -4,7 +4,7 @@ import app from '../../../../../app';
 import * as url from '../../../utils/urls';
 import { HTTP_CREATED } from '../../../utils/status-codes/http-status-codes';
 
-describe('questions /question', () => {
+describe('subscribe /subscripttions', () => {
   let token = '';
   let questionId: '';
   beforeAll(async () => {
@@ -24,16 +24,19 @@ describe('questions /question', () => {
     expect(res.status).toEqual(HTTP_CREATED);
     questionId = res.body.data.question.id;
   });
+  /**
+   * this fails if email is incorrect for the email sending partt but a response of being subscribed is till given
+   */
   it('should create a subscription', (done) => {
     request(app)
       .post(`${url.SUBSCRIPTION_URL}/question/${questionId}`)
       .set('X-Auth-Token', token)
-      .end((res) => {
-        expect(res.status).toEqual(HTTP_CREATED);
-        expect(res.body.message).toEqual('User Subscribed');
-        expect(res.body.status).toEqual(true);
-        expect(res.body).toHaveProperty('data');
-        expect(res.body.data).toHaveProperty('subscribed');
+      .end((res, err) => {
+        expect(err.status).toEqual(HTTP_CREATED);
+        expect(err.body.message).toEqual('User Subscribed');
+        expect(err.body.status).toEqual(true);
+        expect(err.body).toHaveProperty('data');
+        expect(err.body.data).toHaveProperty('subscribe');
         done();
       });
   });
