@@ -10,5 +10,20 @@ const Helper = {
       to: email,
     };
   },
+  /**
+   * options of email to be sentt after questtion is answered
+   * @param title
+   * @param subscribers
+   */
+  sendNewAnswerNotification(title: string, subscribers: any) {
+    return {
+      from: `Tina Oluwabukola ${process.env.GMAIL_USERNAME}`,
+      subject: `Your subscribed question - ${title}- has an answer`,
+      html: `<p>Hi there,</p>
+<p>Your subscribed question has a new answer</p>
+        <h3>Tina</h3>`,
+      to: subscribers.map((sub: { email: string }) => sub.email),
+    };
+  },
 };
 export default Helper;

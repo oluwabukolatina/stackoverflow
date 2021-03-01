@@ -12,5 +12,13 @@ class SubscriptionRepository {
       return e;
     }
   }
+
+  public static async getSubscribers(data: { questionId: number }) {
+    try {
+      return await Subscription.findAll({ where: data });
+    } catch (e) {
+      return e;
+    }
+  }
 }
 export default SubscriptionRepository;

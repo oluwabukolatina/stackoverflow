@@ -6,6 +6,9 @@ import {
   HTTP_CREATED,
   HTTP_OK,
 } from '../../../utils/status-codes/http-status-codes';
+import Helper from '../../../utils/helpers/helper';
+import SubscriptionHelper from '../../subscriptions/utils/helper';
+import question from '../../../../../../database/models/question';
 
 class AnswerController {
   public answerQuestion = async (req: any, response: Response) => {
@@ -16,6 +19,7 @@ class AnswerController {
         userId: req.user.id,
       });
       if (answer) {
+        await SubscriptionHelper.sendEmailToSubscribers(req.params.id);
         return ResponseHandler.SuccessResponse(
           response,
           HTTP_CREATED,

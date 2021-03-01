@@ -1,5 +1,8 @@
 /* eslint-disable max-len */
 import { createTransport } from 'nodemailer';
+import QuestionHelper from '../../answer/utils/helper';
+import SubscriptionRepository from '../repository/subscription.repository';
+import Helper from '../../../utils/helpers/helper';
 
 const SubscriptionHelper = {
   /**
@@ -16,6 +19,17 @@ const SubscriptionHelper = {
     });
   },
   sendEmailToUser(options: any) {
+    return this.createTransporter().sendMail(options);
+  },
+  async sendEmailToSubscribers(id: number) {
+    const question = await QuestionHelper.findQuestion({ id });
+    const subscribers = await SubscriptionRepository.getSubscribers({
+      questionId: id,
+    });
+    const options = await Helper.sendNewAnswerNotification(
+      question.title,
+      subscribers,
+    );
     return this.createTransporter().sendMail(options);
   },
 };
