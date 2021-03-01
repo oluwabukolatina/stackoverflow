@@ -26,8 +26,8 @@ what is required so that your work will be appropriate and easier.
 ---
 ### Heroku App
 - Application was deployed to Heroku. Use public URL https://be-bukola-korapay.herokuapp.com with API endpoints.
-### Swagger
--API Documenttion was generated with swagger.
+### Postman
+-API Documentation was generated with [postman](https://documenter.getpostman.com/view/4223397/TWDditWC).
 #### Setup
 - Installing the project dependencies
   > Run the command below
@@ -95,6 +95,7 @@ what is required so that your work will be appropriate and easier.
 | POST   | Answer question                      | `/answer/:questionId`   |
 | PUT   | Upvote answer                      | `/answer/upvote/:answerId`   |
 | PUT   | Downvote question                      | `/answer/downvote/:answerId`   |
+| POST   | subscribe to question                      | `/subscribe/question/:questionId`   |
 ### Testing
 - Run tests for all
   > run the command below

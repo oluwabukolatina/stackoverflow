@@ -29,14 +29,12 @@ describe('questions /question', () => {
       .post(`${url.SUBSCRIPTION_URL}/question/${questionId}`)
       .set('X-Auth-Token', token)
       .end((res) => {
-        console.log(res);
         expect(res.status).toEqual(HTTP_CREATED);
         expect(res.body.message).toEqual('User Subscribed');
         expect(res.body.status).toEqual(true);
         expect(res.body).toHaveProperty('data');
         expect(res.body.data).toHaveProperty('subscribed');
         done();
-
       });
   });
 });
