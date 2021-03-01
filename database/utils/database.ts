@@ -8,6 +8,9 @@ const sequelize = new Sequelize(
     ? String(process.env.DB_USER)
     : String(process.env.PROD_DB_USER),
   process.env.ENV ? process.env.DB_PASSWORD : process.env.PROD_DB_PASSWORD,
-  { host: process.env.DB_HOST, dialect: 'mysql' },
+  {
+    host: process.env.ENV ? process.env.DB_HOST : process.env.PROD_DB_HOST,
+    dialect: 'mysql',
+  },
 );
 export default sequelize;
