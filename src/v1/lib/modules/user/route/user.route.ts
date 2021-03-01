@@ -6,7 +6,7 @@ class UserRoutes {
   public userController: UserController = new UserController();
 
   public routes = (app: Application): void => {
-    app.route(`${USER_URL}`).post(this.userController.create);
+    // app.route(`${USER_URL}`).post(this.userController.create);
   };
 }
 export default UserRoutes;
