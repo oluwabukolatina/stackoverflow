@@ -1,12 +1,8 @@
 import request from 'supertest';
 import * as faker from 'faker';
-import app from '../src/app';
-import {
-  HTTP_BAD_REQUEST,
-  HTTP_CREATED,
-  HTTP_OK,
-} from '../src/v1/lib/utils/status-codes/http-status-codes';
-import { AUTH_URL } from '../src/v1/lib/utils/urls';
+import * as statusCode from '../../../utils/status-codes/http-status-codes';
+import app from '../../../../../app';
+import { AUTH_URL } from '../../../utils/urls';
 
 describe('auth /auth', () => {
   let email = '';
@@ -16,7 +12,7 @@ describe('auth /auth', () => {
       password: 'password',
     };
     const res = await request(app).post(`${AUTH_URL}/register`).send(data);
-    expect(res.status).toEqual(HTTP_CREATED);
+    expect(res.status).toEqual(statusCode.HTTP_CREATED);
     email = res.body.data.user.email;
   });
   it('should create a user', async () => {
@@ -24,7 +20,7 @@ describe('auth /auth', () => {
       email: faker.internet.email(),
       password: faker.random.word(),
     });
-    expect(res.status).toEqual(HTTP_CREATED);
+    expect(res.status).toEqual(statusCode.HTTP_CREATED);
     expect(res.body.message).toEqual('User Created');
     expect(res.body.status).toEqual(true);
     expect(res.body).toHaveProperty('data');
@@ -33,7 +29,7 @@ describe('auth /auth', () => {
     const res = await request(app).post(`${AUTH_URL}/register`).send({
       password: faker.random.word(),
     });
-    expect(res.status).toEqual(HTTP_BAD_REQUEST);
+    expect(res.status).toEqual(statusCode.HTTP_BAD_REQUEST);
     expect(res.body.message).toEqual('Unable to register');
     expect(res.body.status).toEqual(false);
     expect(res.body).toHaveProperty('error');
@@ -43,7 +39,7 @@ describe('auth /auth', () => {
     const res = await request(app).post(`${AUTH_URL}/register`).send({
       email: faker.internet.email(),
     });
-    expect(res.status).toEqual(HTTP_BAD_REQUEST);
+    expect(res.status).toEqual(statusCode.HTTP_BAD_REQUEST);
     expect(res.body.message).toEqual('Unable to register');
     expect(res.body.status).toEqual(false);
     expect(res.body).toHaveProperty('error');
@@ -54,11 +50,8 @@ describe('auth /auth', () => {
       email,
       password: 'password',
     };
-    const res = await request(app)
-      .post(`${AUTH_URL}/register`)
-      .send(data)
-      .expect(HTTP_BAD_REQUEST);
-    expect(res.status).toEqual(HTTP_BAD_REQUEST);
+    const res = await request(app).post(`${AUTH_URL}/register`).send(data);
+    expect(res.status).toEqual(statusCode.HTTP_BAD_REQUEST);
     expect(res.body.status).toEqual(false);
     expect(res.body.message).toEqual('Invalid Email/Password');
   });
@@ -67,7 +60,7 @@ describe('auth /auth', () => {
       email,
       password: 'password',
     });
-    expect(res.status).toEqual(HTTP_OK);
+    expect(res.status).toEqual(statusCode.HTTP_OK);
     expect(res.body.message).toEqual('User Logged In');
     expect(res.body.status).toEqual(true);
     expect(res.body).toHaveProperty('data');
@@ -78,8 +71,8 @@ describe('auth /auth', () => {
       .send({
         password: faker.random.word(),
       })
-      .expect(HTTP_BAD_REQUEST);
-    expect(res.status).toEqual(HTTP_BAD_REQUEST);
+      .expect(statusCode.HTTP_BAD_REQUEST);
+    expect(res.status).toEqual(statusCode.HTTP_BAD_REQUEST);
     expect(res.body.message).toEqual('Unable to login');
     expect(res.body.status).toEqual(false);
     expect(res.body).toHaveProperty('error');
@@ -89,7 +82,7 @@ describe('auth /auth', () => {
     const res = await request(app).post(`${AUTH_URL}/login`).send({
       email: faker.internet.email(),
     });
-    expect(res.status).toEqual(HTTP_BAD_REQUEST);
+    expect(res.status).toEqual(statusCode.HTTP_BAD_REQUEST);
     expect(res.body.message).toEqual('Unable to login');
     expect(res.body.status).toEqual(false);
     expect(res.body).toHaveProperty('error');

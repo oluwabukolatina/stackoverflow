@@ -16,10 +16,7 @@ const SubscriptionHelper = {
     });
   },
   sendEmailToUser(options: any) {
-    this.createTransporter()
-      .sendMail(options)
-      .then(() => console.log('email sent'))
-      .catch(() => console.log('email not sent'));
+    return this.createTransporter().sendMail(options);
   },
 };
 
