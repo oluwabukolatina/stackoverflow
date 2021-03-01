@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 const AuthHelper = {
-  createToken(id: number) {
-    return jwt.sign({ id }, String(process.env.JWT_SECRET), {
+  createToken(id: number, email: string) {
+    return jwt.sign({ id, email }, String(process.env.JWT_SECRET), {
       expiresIn: 720000,
     });
   },

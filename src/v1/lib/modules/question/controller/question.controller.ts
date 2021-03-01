@@ -1,4 +1,4 @@
-import { Request, RequestHandler, Response } from 'express';
+import { RequestHandler, Response } from 'express';
 import QuestionRepository from '../repository/question.repository';
 import ResponseHandler from '../../../utils/response-handlers/response-handler';
 import {

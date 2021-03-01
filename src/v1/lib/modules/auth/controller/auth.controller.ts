@@ -1,4 +1,4 @@
-import { Request, RequestHandler, Response } from 'express';
+import { RequestHandler } from 'express';
 import ResponseHandler from '../../../utils/response-handlers/response-handler';
 import {
   HTTP_BAD_REQUEST,
@@ -6,7 +6,7 @@ import {
   HTTP_OK,
 } from '../../../utils/status-codes/http-status-codes';
 import AuthRepository from '../repository/auth.repository';
-import UserHelper from '../../../utils/helpers/helper';
+import UserHelper from '../../../utils/helpers/shared/helper';
 import AuthHelper from '../utils/helper';
 
 class AuthController {
@@ -16,7 +16,7 @@ class AuthController {
       const hash = await AuthHelper.hashPassword(password);
       const data = { email, password: hash };
       const user = await AuthRepository.register(data);
-      const token = AuthHelper.createToken(user.id);
+      const token = AuthHelper.createToken(user.id, user.email);
       return ResponseHandler.SuccessResponse(
         response,
         HTTP_CREATED,
@@ -44,7 +44,7 @@ class AuthController {
     try {
       const check = await AuthHelper.comparePassword(password, user.password);
       if (check) {
-        const token = AuthHelper.createToken(user.id);
+        const token = AuthHelper.createToken(user.id, user.email);
         return ResponseHandler.SuccessResponse(
           response,
           HTTP_OK,

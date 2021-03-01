@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 import ResponseHandler from '../../../utils/response-handlers/response-handler';
 import { HTTP_BAD_REQUEST } from '../../../utils/status-codes/http-status-codes';
-import helper from '../../../utils/helpers/helper';
+import helper from '../../../utils/helpers/shared/helper';
 
 /**
  * to sign the user
