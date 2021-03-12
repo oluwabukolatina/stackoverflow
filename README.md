@@ -1,4 +1,4 @@
-# be-bukola-ajishebiyawo
+
 This exercise is designed to test your knowledge of RESTful API
 design, database design, documentation (OpenAPI or Postman), design
 patterns and problem solving skills.
