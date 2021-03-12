@@ -1,5 +1,4 @@
 # be-bukola-ajishebiyawo
-## Senior Backend Engineer Technical Test
 This exercise is designed to test your knowledge of RESTful API
 design, database design, documentation (OpenAPI or Postman), design
 patterns and problem solving skills.
@@ -80,7 +79,6 @@ what is required so that your work will be appropriate and easier.
   ```shell
   $ npm run dev
   ```
-- Use `http://localhost:${PORT}/api/v1/korapay` as base url for endpoints
 ### API Endpoints
 | METHOD | DESCRIPTION                             | ENDPOINTS                 |
 | ------ | --------------------------------------- | ------------------------- |
